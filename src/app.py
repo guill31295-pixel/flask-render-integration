@@ -30,3 +30,13 @@ def index():
 if __name__ == "__main__":
     app.run(debug=True)
 
+import os
+from pathlib import Path
+
+# Get the directory where app.py is located
+BASE_DIR = Path(__file__).resolve().parent
+
+# Build the path to the model relative to app.py
+# Agrega .parent después de BASE_DIR para salir de la carpeta 'src'
+model_path = BASE_DIR.parent / "models" / "decision_tree_classifier_default_42.sav"
+model = load(open(model_path, "rb"))
